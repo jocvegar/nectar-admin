@@ -5,7 +5,7 @@
         <logo />
       </div>
       <v-card class="text-center">
-        <v-card-title class="headline">
+        <v-card-title class="headline arboria-text">
           Algo Nectar
         </v-card-title>
         <v-card-text>

@@ -35,7 +35,7 @@
         </v-btn>
       </div>
 
-      <v-toolbar-title v-text="title" />
+      <v-toolbar-title class="bender-text" v-text="title" />
       <v-spacer />
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>mdi-arm-flex</v-icon>
@@ -47,11 +47,28 @@
       </v-container>
     </v-main>
     <v-navigation-drawer v-model="rightDrawer" :right="true" temporary fixed>
-      <v-list>
+      <!-- <v-list>
         <v-list-item>
           <v-list-item-title class="pija--text">
             HOLA HIJOS - algun resumen aca
           </v-list-item-title>
+        </v-list-item>
+        <v-list-item-icon>
+          <v-icon>mdi-email</v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title>Inbox</v-list-item-title>
+        </v-list-item-content>
+      </v-list> -->
+      <v-list>
+        <v-list-item v-for="([icon, text], i) in sideItems" :key="i" link>
+          <v-list-item-icon>
+            <v-icon>{{ icon }}</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>{{ text }}</v-list-item-title>
+          </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -86,7 +103,8 @@ export default {
           title: "Ventas",
           to: "/ventas"
         }
-      ]
+      ],
+      sideItems: [["mdi-skull-outline", "User"]]
     };
   },
   mounted() {
@@ -100,3 +118,12 @@ export default {
   }
 };
 </script>
+
+<style>
+.bender-text {
+  font-family: "Bender", sans-serif;
+}
+.v-application {
+  font-family: "Arboria", sans-serif;
+}
+</style>

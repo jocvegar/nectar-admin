@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "Arboria";
+  src: url("~assets/Arboria/ARBORIA-MEDIUM.TTF") format("truetype");
+}
+
+@font-face {
+  font-family: "Bender";
+  src: url("~assets/Bender/BENDER-SOLID.OTF") format("truetype");
+}
