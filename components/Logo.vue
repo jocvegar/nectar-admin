@@ -1,5 +1,5 @@
 <template>
-  <img class="NectarLogo" alt="Nectar Logo" src="/templo_blanco.png" />
+  <img class="NectarLogo" alt="Nectar Logo" src="/logo.png" />
 </template>
 
 <style>

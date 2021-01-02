@@ -2,7 +2,7 @@
   <v-row>
     <v-col class="text-center">
       <img
-        src="/templo_blanco.png"
+        src="/logo.png"
         alt="Vuetify.js"
         class="mb-5"
         style="height:180px;"
