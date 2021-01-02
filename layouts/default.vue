@@ -1,6 +1,7 @@
 <template>
   <v-app dark>
     <v-navigation-drawer
+      v-on-clickaway="drawerAway"
       v-model="drawer"
       :mini-variant="miniVariant"
       :clipped="clipped"
@@ -25,32 +26,31 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-btn icon @click.stop="miniVariant = !miniVariant">
         <v-icon>mdi-{{ `chevron-${miniVariant ? "right" : "left"}` }}</v-icon>
       </v-btn>
+
       <v-toolbar-title v-text="title" />
-
       <v-spacer />
-
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>mdi-menu</v-icon>
       </v-btn>
     </v-app-bar>
-
     <v-main>
       <v-container class="mt-4">
         <nuxt />
       </v-container>
     </v-main>
-
     <v-navigation-drawer v-model="rightDrawer" :right="true" temporary fixed>
       <v-list>
         <v-list-item>
-          <v-list-item-title class="pija--text">HOLA HIJOS </v-list-item-title>
+          <v-list-item-title class="pija--text">
+            HOLA HIJOS
+          </v-list-item-title>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-
     <!-- <v-footer :absolute="!fixed" app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer> -->
@@ -58,11 +58,17 @@
 </template>
 
 <script>
+import { mixin as clickaway } from "vue-clickaway";
+
 export default {
+  mixins: [clickaway],
   data() {
     return {
-      clipped: true,
-      drawer: true,
+      clipped: false,
+      drawer: false,
+      miniVariant: false,
+      rightDrawer: false,
+      title: "NECTAR ADMIN",
       items: [
         {
           icon: "mdi-home-variant",
@@ -74,11 +80,14 @@ export default {
           title: "Ventas",
           to: "/ventas"
         }
-      ],
-      miniVariant: true,
-      rightDrawer: false,
-      title: "NECTAR ADMIN"
+      ]
     };
+  },
+  methods: {
+    drawerAway: function() {
+      // this.miniVariant = false;
+      console.log("I was clicked");
+    }
   }
 };
 </script>
