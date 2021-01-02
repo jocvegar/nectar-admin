@@ -5,7 +5,7 @@
         src="/templo_blanco.png"
         alt="Vuetify.js"
         class="mb-5"
-        style="height:200px;"
+        style="height:180px;"
       />
       <blockquote class="blockquote">
         HOLA GAYS

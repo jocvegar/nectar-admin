@@ -10,9 +10,8 @@
         </v-card-title>
         <v-card-text>
           <p>
-            Quisiera tener el logo nuevo 😁
+            {{ test }}
           </p>
-
           <hr class="my-3" />
         </v-card-text>
       </v-card>
@@ -22,10 +21,29 @@
 
 <script>
 import Logo from "~/components/Logo.vue";
+import { db } from "~/plugins/firebase.js";
 
 export default {
   components: {
     Logo
+  },
+  data() {
+    return {
+      test: ""
+    };
+  },
+  mounted() {
+    this.callsomething();
+  },
+  methods: {
+    callsomething() {
+      console.log("HOLA");
+      db.doc("settings/global")
+        .get()
+        .then(doc => {
+          this.test = doc.data().test;
+        });
+    }
   }
 };
 </script>

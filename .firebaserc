@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "nectar-hn"
+  },
+  "targets": {
+    "nectar-hn": {
+      "hosting": {
+        "admin": [
+          "nectar-admin"
+        ]
+      }
+    }
+  }
+}
