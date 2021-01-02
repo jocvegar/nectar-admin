@@ -15,13 +15,8 @@ var firebaseConfig = {
   measurementId: config.firebase.measurementId
 };
 // Initialize Firebase
-!firebase.apps || !firebase.apps.length
-  ? firebase.initializeApp(firebaseConfig)
-  : "";
+!firebase.apps.length ? firebase.initializeApp(firebaseConfig) : "";
 
-// firebase utils
-const db = firebase.firestore();
-const auth = firebase.auth();
-// const currentUser = auth.currentUser;
-
-export { db, auth, firebase };
+export const auth = firebase.auth();
+export const db = firebase.firestore();
+export default firebase;
