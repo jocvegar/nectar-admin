@@ -22,11 +22,13 @@
 <script>
 import Logo from "~/components/Logo.vue";
 import { db } from "~/plugins/firebase.js";
+import auth from "@/mixins/authMixin";
 
 export default {
   components: {
     Logo
   },
+  mixins: [auth],
   data() {
     return {
       test: ""
@@ -37,7 +39,6 @@ export default {
   },
   methods: {
     callsomething() {
-      console.log("HOLA");
       db.doc("settings/global")
         .get()
         .then(doc => {

@@ -18,3 +18,11 @@
     </v-col>
   </v-row>
 </template>
+
+<script>
+import auth from "@/mixins/authMixin";
+
+export default {
+  mixins: [auth]
+};
+</script>

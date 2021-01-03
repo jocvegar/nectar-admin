@@ -1,7 +1,6 @@
 <template>
   <v-app dark>
     <v-navigation-drawer
-      v-on-clickaway="drawerAway"
       v-model="drawer"
       :mini-variant="miniVariant"
       :clipped="clipped"
@@ -47,21 +46,20 @@
       </v-container>
     </v-main>
     <v-navigation-drawer v-model="rightDrawer" :right="true" temporary fixed>
-      <!-- <v-list>
-        <v-list-item>
-          <v-list-item-title class="pija--text">
-            HOLA HIJOS - algun resumen aca
-          </v-list-item-title>
-        </v-list-item>
-        <v-list-item-icon>
-          <v-icon>mdi-email</v-icon>
-        </v-list-item-icon>
-        <v-list-item-content>
-          <v-list-item-title>Inbox</v-list-item-title>
-        </v-list-item-content>
-      </v-list> -->
       <v-list>
-        <v-list-item v-for="([icon, text], i) in sideItems" :key="i" link>
+        <v-list-item link>
+          <v-list-item-icon>
+            <v-icon>mdi-skull-outline</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title @click.stop="signOut()" class="pija--text">
+              {{ user && user.displayName ? user.displayName : "Hola" }}
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <!-- <v-list-item v-for="([icon, text], i) in sideItems" :key="i" link>
           <v-list-item-icon>
             <v-icon>{{ icon }}</v-icon>
           </v-list-item-icon>
@@ -69,7 +67,7 @@
           <v-list-item-content>
             <v-list-item-title>{{ text }}</v-list-item-title>
           </v-list-item-content>
-        </v-list-item>
+        </v-list-item> -->
       </v-list>
     </v-navigation-drawer>
     <!-- <v-footer :absolute="!fixed" app>
@@ -80,6 +78,8 @@
 
 <script>
 import { mixin as clickaway } from "vue-clickaway";
+import { mapGetters } from "vuex";
+
 var mobile = require("is-mobile");
 
 export default {
@@ -104,17 +104,22 @@ export default {
           to: "/ventas"
         }
       ],
-      sideItems: [["mdi-skull-outline", "User"]]
+      sideItems: [["mdi-skull-outline", "fuck"]]
     };
   },
-  mounted() {
+  beforeMount() {
     this.mobile = mobile();
   },
   methods: {
-    drawerAway: function() {
-      // this.miniVariant = false;
-      console.log("I was clicked");
+    signOut(err) {
+      this.$store.dispatch("signOut").catch(err => {
+        alert(err.message);
+      });
+      this.$router.push("/login");
     }
+  },
+  computed: {
+    ...mapGetters(["user"])
   }
 };
 </script>

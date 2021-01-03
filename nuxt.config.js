@@ -24,7 +24,7 @@ export default {
   css: ["@/assets/global.css"],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ["~/plugins/firebase.js"],
+  plugins: ["~/plugins/firebase.js", "~/plugins/fireauth.js"],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -40,7 +40,6 @@ export default {
     // https://go.nuxtjs.dev/pwa
     "@nuxtjs/pwa"
   ],
-
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
     customVariables: ["~/assets/variables.scss"],
@@ -60,7 +59,20 @@ export default {
       }
     }
   },
-
+  pwa: {
+    icon: {
+      fileName: "app-icon.png"
+    },
+    manifest: {
+      name: "Nectar Admin",
+      short_name: "NECTAR",
+      background_color: "#00000080",
+      theme_color: "#00000080"
+    }
+  },
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {}
+  // router: {
+  //   middleware: "router-auth"
+  // }
 };
